@@ -5,6 +5,7 @@ export const CustomContext = createContext()
 
 export const Context = (props) => {
   const [taskText, setTaskText] = useState('')
+  const [searchValue, setSearchValue] = useState('')
   const [allTodos, setAllTodos] = useState([])
   const [editTask, setEditTask] = useState(false)
   const [addNewTask, setAddNewTask] = useState(false)
@@ -57,7 +58,7 @@ export const Context = (props) => {
         const userData = tx.objectStore('userData')
 
         const todoTasks = userData.put({
-          id: allTodos[allTodos?.length-1].id + 1,
+          id: allTodos[allTodos?.length - 1].id + 1,
           taskText,
           taskEditTime
         })
@@ -85,14 +86,26 @@ export const Context = (props) => {
 
       const deleteUser = userData.delete(key)
 
-      deleteUser.onsuccess=(query)=>{
-        tx.oncomplete=()=>{
+      deleteUser.onsuccess = (query) => {
+        tx.oncomplete = () => {
           db.close()
         }
         getAllData()
       }
     }
   }
+
+  const filterTask = (search) => {
+    if (search === '') {
+      return allTodos
+    } else {
+      allTodos.filter(item => {
+        console.log(search)
+        return item.taskText.toLowerCase() === search.toLowerCase()
+      })
+    }
+  }
+
 
   let currentTask = allTodos.filter(item => {
     return item?.id === active ? item : ''
@@ -109,6 +122,9 @@ export const Context = (props) => {
     setActive,
     deleteTask,
     currentTask,
+    searchValue,
+    setSearchValue,
+    filterTask
   }
 
   return (
