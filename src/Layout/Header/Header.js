@@ -6,13 +6,13 @@ import PLusIcon from "../../assets/icons/PLusIcon";
 import {CustomContext} from "../../utils/Context";
 
 const Header = () => {
-  const {addTask} = useContext(CustomContext)
+  const {active, addTask, deleteTask} = useContext(CustomContext)
   return (
     <header className='header'>
       <div className="header__content">
         <div className="header__buttons">
           <PLusIcon className='plusIcon' onClick={addTask} />
-          <DeleteIcon className='deleteIcon'/>
+          <DeleteIcon className='deleteIcon' onClick={()=>deleteTask(active)}/>
           <EditIcon className='editIcon'/>
         </div>
         <SearchBox/>

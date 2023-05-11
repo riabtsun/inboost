@@ -6,6 +6,10 @@ export const CustomContext = createContext()
 export const Context = (props) => {
   const [taskText, setTaskText] = useState('')
   const [allTodos, setAllTodos] = useState([])
+  const [editTask, setEditTask] = useState(false)
+  const [addNewTask, setAddNewTask] = useState(false)
+  const [active, setActive] = useState()
+
 
   let today = new Date()
   let taskEditTime = today.toLocaleString()
@@ -13,7 +17,7 @@ export const Context = (props) => {
   useEffect(() => {
     createCollectionsInIndexedDB()
     getAllData()
-  }, [allTodos])
+  }, [])
 
   const getAllData = () => {
     const dbPromise = idb.open('todoList', 1)
@@ -53,16 +57,16 @@ export const Context = (props) => {
         const userData = tx.objectStore('userData')
 
         const todoTasks = userData.put({
-          id: allTodos?.length + 1,
+          id: allTodos[allTodos?.length-1].id + 1,
           taskText,
           taskEditTime
         })
+
         todoTasks.onsuccess = () => {
           tx.oncomplete = () => {
             db.close()
           }
           getAllData()
-          alert('info added')
         }
         todoTasks.onerror = (event) => {
           console.log(event)
@@ -71,6 +75,29 @@ export const Context = (props) => {
     }
   }
 
+  const deleteTask = (key) => {
+
+    const dbPromise = idb.open('todoList', 1)
+    dbPromise.onsuccess = () => {
+      const db = dbPromise.result
+      let tx = db.transaction("userData", 'readwrite')
+      let userData = tx.objectStore('userData')
+
+      const deleteUser = userData.delete(key)
+
+      deleteUser.onsuccess=(query)=>{
+        tx.oncomplete=()=>{
+          db.close()
+        }
+        getAllData()
+      }
+    }
+  }
+
+  let currentTask = allTodos.filter(item => {
+    return item?.id === active ? item : ''
+  })[0]?.taskText
+
   const value = {
     taskText,
     setTaskText,
@@ -78,7 +105,10 @@ export const Context = (props) => {
     setAllTodos,
     addTask,
     taskEditTime,
-    // setTaskEditTime
+    active,
+    setActive,
+    deleteTask,
+    currentTask,
   }
 
   return (
