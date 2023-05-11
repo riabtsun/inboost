@@ -3,18 +3,15 @@ import SearchIcon from "../../assets/icons/SearchIcon";
 import {CustomContext} from "../../utils/Context";
 
 const SearchBox = () => {
-  const {searchValue, setSearchValue, filterTask} = useContext(CustomContext)
+    const {setSearchValue} = useContext(CustomContext)
 
-
-  return (
-    <div className='searchBox'>
-      <input onChange={event => {
-        setSearchValue(event.target.value);
-        filterTask(searchValue)
-      }} type="search" className='searchBox__input'/>
-      <SearchIcon className='searchBox__icon'/>
-    </div>
-  );
+    return (
+        <div className='searchBox'>
+            <input onChange={e => setSearchValue(e.target.value)}
+                   type="search" className='searchBox__input'/>
+            <SearchIcon className='searchBox__icon'/>
+        </div>
+    );
 };
 
 export default SearchBox;

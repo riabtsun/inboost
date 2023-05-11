@@ -2,12 +2,12 @@ import React, {useContext, useEffect, useState} from 'react';
 import {CustomContext} from "../../utils/Context";
 
 const Sidebar = () => {
-  const {allTodos, active, setActive} = useContext(CustomContext)
+  const { active, setActive, filterData} = useContext(CustomContext)
 
   return (
     <div className='sidebar'>
       <ul className='sidebar__list'>
-        {allTodos?.map((item) => {
+        {filterData?.map((item) => {
           return (
             <li onClick={()=>setActive(item.id)} key={item?.id}
                 className={`sidebar__list-item ${active === item.id && 'active'}`}>

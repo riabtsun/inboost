@@ -1,4 +1,4 @@
-import {createContext, useEffect, useState} from "react";
+import React, {createContext, useEffect, useState} from "react";
 import {createCollectionsInIndexedDB, idb} from "../utils/IndexedDB"
 
 export const CustomContext = createContext()
@@ -58,7 +58,7 @@ export const Context = (props) => {
         const userData = tx.objectStore('userData')
 
         const todoTasks = userData.put({
-          id: allTodos[allTodos?.length - 1].id + 1,
+          id: allTodos.length > 0 ? allTodos[allTodos?.length - 1].id + 1 : allTodos?.length + 1,
           taskText,
           taskEditTime
         })
@@ -95,16 +95,9 @@ export const Context = (props) => {
     }
   }
 
-  const filterTask = (search) => {
-    if (search === '') {
-      return allTodos
-    } else {
-      allTodos.filter(item => {
-        console.log(search)
-        return item.taskText.toLowerCase() === search.toLowerCase()
-      })
-    }
-  }
+  const filterData = allTodos.filter(item => {
+    return item.taskText.toLowerCase().includes(searchValue.toLowerCase())
+  })
 
 
   let currentTask = allTodos.filter(item => {
@@ -124,7 +117,7 @@ export const Context = (props) => {
     currentTask,
     searchValue,
     setSearchValue,
-    filterTask
+    filterData
   }
 
   return (
