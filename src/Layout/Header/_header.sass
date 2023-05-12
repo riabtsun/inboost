@@ -1,17 +1,24 @@
 .header
-  background: linear-gradient(180deg, #e5e5e7 0%, #c9c9c9 100%)
-  box-shadow: inset 0 3px 2px rgba(255, 255, 255, 0.25)
-  padding: 20px
+  padding: 8px 10px
+  background: linear-gradient(180deg, #EDECED 1.45%, #D2D1D2 97.1%)
+  box-shadow: inset 0 0.5px 0.5px rgba(255, 255, 255, 0.5), inset 0px -0.5px 0px #B7B4B7, inset 0px -1px 0px rgba(183, 180, 183, 0.3)
   &__content
    display: flex
    justify-content: space-between
    align-items: center
+  &__button
+    margin: 5px
+    background: linear-gradient(180deg, #FEFEFE 0%, #F3F3F3 100%)
+    border: 0.5px solid rgba(0, 0, 0, 0.1)
+    box-shadow: 0 0.5px 0 rgba(0, 0, 0, 0.15)
+    border-radius: 4px
+    transition: .3s
+    padding: 4px 4px 0 4px
+    cursor: pointer
+    &:hover
+      background: linear-gradient(180deg, #FEFEFE 0%, #dff6fa 100%)
   .deleteIcon,
   .editIcon,
   .plusIcon
-    width: 20px
+    width: 30px
     height: 20px
-    padding: 2px
-    border: 1px solid #000
-    border-radius: 10px
-    margin: 5px
