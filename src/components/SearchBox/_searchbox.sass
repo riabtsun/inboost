@@ -2,17 +2,18 @@
   display: flex
   justify-content: flex-end
   position: relative
-  width: 15%
+  width: 50%
+  @media (width >= 768px)
+    width: 15%
   &__input
     background: #fff
     border-radius: 100px
     height: 48px
     width: 100%
     padding-left: 40px
-    background: linear-gradient(180deg, #FEFEFE 0%, #F3F3F3 100%)
+    background: linear-gradient(180deg, #fefefe 0%, #f3f3f3 100%)
     border: 0.5px solid rgba(0, 0, 0, 0.1)
     box-shadow: 0 0.5px 0 rgba(0, 0, 0, 0.15)
-  border-radius: 4px
   &__icon
     position: absolute
     cursor: pointer

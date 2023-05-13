@@ -10,12 +10,9 @@ const Header = () => {
     active,
     addTask,
     deleteTask,
-    editTask,
     setEditTask,
-    setTaskText,
-    taskText,
-    editTaskText,
     setAddNewTask,
+    disableButtons,
   } = useContext(CustomContext);
   return (
     <header className="header">
@@ -27,15 +24,21 @@ const Header = () => {
               setEditTask(false);
               setAddNewTask(true);
               addTask();
-              // setTaskText("");
             }}
           >
             <PLusIcon className="plusIcon" />
           </button>
-          <button className="header__button" onClick={() => deleteTask(active)}>
+          <button
+            disabled={!!disableButtons}
+            className="header__button"
+            onClick={() => {
+              deleteTask(active);
+            }}
+          >
             <DeleteIcon className="deleteIcon" />
           </button>
           <button
+            disabled={!!disableButtons}
             className="header__button"
             onClick={() => {
               setEditTask(true);
