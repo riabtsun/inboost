@@ -125,20 +125,23 @@ export const Context = (props) => {
 
   const deleteTask = (key) => {
     const dbPromise = idb.open("todoList", 1);
-    dbPromise.onsuccess = () => {
-      const db = dbPromise.result;
-      let tx = db.transaction("userData", "readwrite");
-      let userData = tx.objectStore("userData");
+    let answer = window.confirm("Are you sure you want to delete");
+    if (answer) {
+      dbPromise.onsuccess = () => {
+        const db = dbPromise.result;
+        let tx = db.transaction("userData", "readwrite");
+        let userData = tx.objectStore("userData");
 
-      const deleteUser = userData.delete(key);
+        const deleteUser = userData.delete(key);
 
-      deleteUser.onsuccess = () => {
-        tx.oncomplete = () => {
-          db.close();
+        deleteUser.onsuccess = () => {
+          tx.oncomplete = () => {
+            db.close();
+          };
+          getAllData();
         };
-        getAllData();
       };
-    };
+    }
   };
 
   const value = {
