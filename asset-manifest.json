@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/riabtsun/inboost/static/css/main.641726de.css",
+    "main.js": "/riabtsun/inboost/static/js/main.31a782ae.js",
+    "static/media/SFProText-Regular.ttf": "/riabtsun/inboost/static/media/SFProText-Regular.90da7ab18293ca42e335.ttf",
+    "index.html": "/riabtsun/inboost/index.html",
+    "main.641726de.css.map": "/riabtsun/inboost/static/css/main.641726de.css.map",
+    "main.31a782ae.js.map": "/riabtsun/inboost/static/js/main.31a782ae.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.641726de.css",
+    "static/js/main.31a782ae.js"
+  ]
+}
