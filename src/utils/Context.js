@@ -118,9 +118,6 @@ export const Context = (props) => {
     }
   };
 
-  // let currentTask = allTodos.filter(item => {
-  //   return item?.id === active ? item : ''
-  // })[0]?.taskText
   let currentTask = allTodos.find((item) => item.id === active);
 
   const deleteTask = (key) => {
