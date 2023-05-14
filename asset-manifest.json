@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/riabtsun/inboost/static/css/main.641726de.css",
-    "main.js": "/riabtsun/inboost/static/js/main.31a782ae.js",
-    "static/media/SFProText-Regular.ttf": "/riabtsun/inboost/static/media/SFProText-Regular.90da7ab18293ca42e335.ttf",
-    "index.html": "/riabtsun/inboost/index.html",
-    "main.641726de.css.map": "/riabtsun/inboost/static/css/main.641726de.css.map",
-    "main.31a782ae.js.map": "/riabtsun/inboost/static/js/main.31a782ae.js.map"
+    "main.css": "/inboost/static/css/main.f6f8aa70.css",
+    "main.js": "/inboost/static/js/main.31a782ae.js",
+    "static/media/SFProText-Regular.ttf": "/inboost/static/media/SFProText-Regular.90da7ab18293ca42e335.ttf",
+    "index.html": "/inboost/index.html",
+    "main.f6f8aa70.css.map": "/inboost/static/css/main.f6f8aa70.css.map",
+    "main.31a782ae.js.map": "/inboost/static/js/main.31a782ae.js.map"
   },
   "entrypoints": [
-    "static/css/main.641726de.css",
+    "static/css/main.f6f8aa70.css",
     "static/js/main.31a782ae.js"
   ]
 }
